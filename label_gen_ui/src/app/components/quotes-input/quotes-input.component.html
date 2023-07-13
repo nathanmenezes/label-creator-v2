@@ -1,0 +1,50 @@
+<div class="quotes-body mt-4">
+    <div class="container-fluid">
+        <!--    ================= tab header ====================-->
+        <div class="row tab_header">
+            <div class="col tab_header_border d-flex align-content-center justify-content-around" >
+                <p class="mt-1">Entrada</p>
+            </div>
+
+            <div class="col tab_header_text d-flex align-content-center justify-content-around">
+                <p class="mt-1">Criadas</p>
+            </div>
+        </div>
+        <!--    ====================================================-->
+        <div class="row t2">
+<!--            ================= Coluna da esquerda ================-->
+            <div class="col d-flex align-content-center justify-content-around left" >
+
+                <textarea class="custom-input-entrada m-3 custom_input_area"
+                          name="quotes"
+                          [(ngModel)]="quoteInput"
+                ></textarea>
+
+            </div>
+<!--                ===================== Coluna da direita =============================-->
+            <div class="col right">
+
+                <div class="row small_input_container d-flex align-content-center justify-content-around" >
+                    <textarea class="custom_small_input_area aprovados m-4" value="{{approved}}" readonly></textarea>
+                </div>
+
+<!--                ====================================================================-->
+                <div class="row tab_header2">
+                    <div class="col tab_header_text d-flex align-content-center justify-content-around" >
+                        <p class="mt-1">Já existe no banco</p>
+                    </div>
+                </div>
+
+                <div class="row small_input_container d-flex align-content-center justify-content-around">
+                    <textarea class="custom_small_input_area reprovados m-4" value="{{reproved}}" readonly></textarea>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col d-flex create_button_area bg-dark justify-content-around align-content-center" >
+                <button class="m-2 create_button" mat-button (click)="sendQuotes()">Criar</button>
+            </div>
+        </div>
+    </div>
+</div>

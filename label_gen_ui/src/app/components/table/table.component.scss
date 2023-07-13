@@ -1,0 +1,60 @@
+:root{
+  --tab_header_border_color: #848383;
+}
+
+//Css do componente como um todo:
+.table-body{
+  background-color: transparent;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  width: 95vw;
+  height: auto;
+}
+
+.tab_header{
+  background-color: #222222;
+  border: 2px solid #FFFFFF;
+  color: #FFFF;
+  border-radius: 10px 10px 0 0;
+}
+.tab_header_text{
+  border-right: 2px #848383 solid;
+  font-size: 20px;
+  font-weight: 400;
+}
+.tab_content_text{
+  border-right: 2px #848383 solid;
+}
+.tab_content{
+  color: #222222;
+}
+
+.tab_content div{
+  background-color: #1a1919;
+
+}
+.table_function_button{
+  width: 35px;
+  height: 35px;
+  border-radius: 20px;
+  background-color: transparent;
+  border: none;
+}
+
+.table_function_button:hover{
+  cursor: pointer;
+}
+.table_function_logo{
+  width: 90%;
+  height: 90%;
+}
+.table_function_checkbox{
+  margin-top: 4px;
+  transform: scale(1.2);
+}
+.t1{
+  background-color: #1BF931;
+}
+
+.table-container{
+  overflow-y: auto !important;
+}

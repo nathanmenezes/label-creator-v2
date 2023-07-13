@@ -1,0 +1,27 @@
+<div class="container-fluid nav_component">
+    <div class="row">
+        <div class="col-1 mt-2 d-flex align-content-center justify-content-around">
+            <button mat-raised-button class="nav_button" routerLink="/">Listar</button>
+        </div>
+        <div class="col-1 mt-2 d-flex align-content-center justify-content-around">
+            <button mat-raised-button class="nav_button" routerLink="create">Criar</button>
+        </div>
+        <div class="col-1 mt-2 d-flex align-content-center justify-content-around">
+            <button mat-raised-button class="nav_button" routerLink="replace">Replace</button>
+        </div>
+        <div class="col-1 mt-2 d-flex align-content-center justify-content-around">
+            <button mat-raised-button class="nav_button" routerLink="sql">MySQL</button>
+        </div>
+        <div class="col mt-2 d-flex align-content-center justify-content-around">
+            <img ngSrc="assets/img/logo.png" alt="logo" height="55" width="160">
+        </div>
+        <div class="col mt-2 d-flex align-content-center justify-content-around">
+            <select class="form-select mt-2 form-select-lg mb-3 project_select" [(ngModel)]="selectedProject">
+                <option *ngFor="let project of projects" [value]="project.id" class="project_select_options">
+                    {{ project.name }}
+                </option>
+            </select>
+
+        </div>
+    </div>
+</div>

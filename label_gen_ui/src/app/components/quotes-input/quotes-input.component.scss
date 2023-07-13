@@ -1,0 +1,93 @@
+.quotes-body{
+  background-color: #1a1919;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  width: 70vw;
+  height: auto;
+  margin-right: 6rem;
+  border-radius: 10px 10px 10px 10px;
+}
+
+.left{
+  height: 25rem;
+}
+
+.tab_header{
+  background-color: #222222;
+  border: 2px solid #FFFFFF;
+  color: #FFFF;
+  border-radius: 10px 10px 0 0;
+}
+
+.tab_header2{
+  background-color: #222222;
+  border: 2px solid #FFFFFF;
+  color: #FFFF;
+}
+
+.tab_header_text{
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.tab_header_border{
+  border-right: 2px #848383 solid;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.tab_content_text{
+  border-right: 2px #848383 solid;
+}
+
+.tab_content{
+  color: #222222;
+}
+
+.tab_content div{
+  background-color: #1a1919;
+}
+
+.small_input_container{
+  height: 42%;
+}
+
+.custom_input_area{
+  color: #222222;
+  height: 90%;
+  width: 80%;
+}
+
+.create_button{
+  background-color: #676767;
+  width: 100px;
+  scale: (1.2);
+}
+.create_button:hover{
+  transition: all 0.5s;
+  background-color: #4568dc;
+}
+.create_button_area{
+  border-radius: 0 0 10px 10px;
+  border: 2px solid #FFFFFF
+}
+//====================================== Input e output area ================================================
+.custom_small_input_area{
+  width: 80%;
+  height: 80%;
+  resize: none;
+  outline: none;
+}
+
+.custom-input-entrada{
+  color: #222222;
+  resize: none;
+  width: 80%;
+  height: 90%;
+}
+//==============================================================================================================
+.aprovados{
+  color: #04a113;
+}
+.reprovados{
+  color: red;
+}

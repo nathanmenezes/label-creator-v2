@@ -1,0 +1,25 @@
+.nav_component{
+  border-bottom: #FFFFFF 1px solid;
+  height: 100%;
+  width: 100vw;
+}
+.nav_button{
+  background: #4F4F4F;
+  outline: none;
+}
+.nav_button:hover{
+  transition: all 0.5s;
+  background-color: #4568dc;
+}
+.project_select{
+  color: #4568dc;
+  width: 200px;
+  background-color: #FFFFFF;
+}
+.project_select_holder{
+  color: #04a113;
+}
+.project_select_options{
+  color: #1a1919;
+}
+
