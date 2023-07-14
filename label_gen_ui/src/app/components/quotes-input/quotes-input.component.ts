@@ -24,6 +24,8 @@ export class QuotesInputComponent implements OnInit{
 
     sendQuotes(){
         this.quotes.quotes = this.separateWords(this.quoteInput);
+        this.approved = "";
+        this.reproved = "";
         this.service.sendLabels(this.quotes).subscribe((resp) =>{
             console.log(resp);
                 for (const label of resp.body.approved) {
