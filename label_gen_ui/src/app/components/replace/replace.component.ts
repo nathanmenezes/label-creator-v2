@@ -1,28 +1,32 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {Html} from "../../model/html";
+import {LabelService} from "../../service/label.service";
 
 @Component({
-  selector: 'app-replace',
-  templateUrl: './replace.component.html',
-  styleUrls: ['./replace.component.scss']
+    selector: 'app-replace',
+    templateUrl: './replace.component.html',
+    styleUrls: ['./replace.component.scss']
 })
 export class ReplaceComponent {
-  words: string[] = [];
+    constructor(private service: LabelService) {
+    }
 
-  html: Html = {
-    html: ""
-  }
+    words: string[] = [];
 
-  result: string = "";
+    html: Html = {
+        html: ""
+    }
 
-  // sendHtml() {
-  //   this.service.sendHtml(this.html).subscribe((resp) => {
-  //         console.log(resp);
-  //         this.result = resp.html;
-  //       },
-  //       error => {
-  //         console.error(error);
-  //       }
-  //   )
-  // }
+    result: string = "";
+
+    sendHtml() {
+        this.service.sendHtml(this.html).subscribe((resp) => {
+                console.log(resp);
+                this.result = resp.html;
+            },
+            error => {
+                console.error(error);
+            }
+        )
+    }
 }

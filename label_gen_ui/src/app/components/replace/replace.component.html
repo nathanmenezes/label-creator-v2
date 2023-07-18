@@ -1,29 +1,32 @@
-
 <div class="quotes-body mt-4">
     <div class="container-fluid">
         <!--    ================= tab header ====================-->
         <div class="row tab_header">
-            <div class="col tab_header_border d-flex align-content-center justify-content-around" >
+            <div class="col tab_header_border d-flex align-content-center justify-content-around">
                 <p class="mt-1">Entrada</p>
             </div>
 
             <div class="col tab_header_text d-flex align-content-center justify-content-around">
-                <p class="mt-1">Criadas</p>
+                <p class="mt-1">Saida</p>
             </div>
         </div>
         <!--    ====================================================-->
         <div class="row t2">
             <!--            ================= Coluna da esquerda ================-->
-            <div class="col d-flex align-content-center justify-content-around left" >
-                <textarea class="custom-input-entrada m-3 custom_input_area"></textarea>
+            <div class="col d-flex align-content-center justify-content-around left">
+                <textarea class="custom-input-entrada m-3 custom_input_area"
+                          name="html"
+                          [(ngModel)]="html.html">
+                </textarea>
             </div>
-            <div class="col d-flex align-content-center justify-content-around left" >
-                <textarea class="custom-input-entrada m-3 custom_input_area"> </textarea>
+            <div class="col d-flex align-content-center justify-content-around left">
+                <textarea class="custom-input-entrada m-3 custom_input_area"
+                value="{{result}}" readonly> </textarea>
             </div>
         </div>
         <div class="row">
-            <div class="col d-flex create_button_area bg-dark justify-content-around align-content-center" >
-                <button class="m-2 create_button" mat-button>Criar</button>
+            <div class="col d-flex create_button_area bg-dark justify-content-around align-content-center">
+                <button class="m-2 create_button" mat-button (click)="sendHtml()">Substituir</button>
             </div>
         </div>
     </div>

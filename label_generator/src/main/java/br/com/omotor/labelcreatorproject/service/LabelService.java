@@ -94,9 +94,10 @@ public class LabelService {
         List<String> replacedLabels = new ArrayList<>();
 
         labels.forEach(label -> {
-            CharSequence charSequence = label.getValue();
-            if (html.getHtml().contains(charSequence)) {
-                html.setHtml(html.getHtml().replace(label.getValue(), "{{" + "'" + label.getKeyLabel() + "'" + " | translate}}"));
+            CharSequence charSequence = label.getValue().toLowerCase();
+            if (html.getHtml().toLowerCase().contains(charSequence)) {
+                html.setHtml(html.getHtml()
+                        .replace(label.getValue().toLowerCase(), "{{" + "'" + label.getKeyLabel() + "'" + " | translate}}"));
                 replacedLabels.add(label.getValue());
             }
         });
