@@ -16,4 +16,8 @@ public interface SystemTranslateRepository extends JpaRepository<SystemTranslate
     List<SystemTranslate> findAllByProjectId(Long id);
 
     List<SystemTranslate> findAllByProjectIdAndSystemLocaleId(Long idProject, Integer systemLocaleId);
+
+    List<SystemTranslate> findAllByValueIsLikeIgnoreCase(String value);
+
+    List<SystemTranslate> findAllBySystemLocaleId(long l);
 }

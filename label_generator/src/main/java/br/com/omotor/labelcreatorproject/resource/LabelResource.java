@@ -1,6 +1,5 @@
 package br.com.omotor.labelcreatorproject.resource;
 
-import br.com.omotor.labelcreatorproject.model.*;
 import br.com.omotor.labelcreatorproject.model.dto.*;
 import br.com.omotor.labelcreatorproject.service.LabelService;
 import jakarta.validation.Valid;
@@ -49,8 +48,13 @@ public class LabelResource {
     }
 
     @PostMapping("/replace")
-    public ResponseEntity<?> replaceLabel(@RequestBody Html html){
-        return service.replaceLabel(html);
+    public ResponseEntity<?> replaceLabel(@RequestBody Html html, @PathVariable Long projectId){
+        return service.replaceLabel(html, projectId);
+    }
+
+    @PostMapping("/translate/{projectId}")
+    public ResponseEntity<Html> translateLabel(@RequestBody Html html, @PathVariable Long projectId){
+        return service.htmlTranslator(html, projectId);
     }
 
     @GetMapping("/project/{id}")

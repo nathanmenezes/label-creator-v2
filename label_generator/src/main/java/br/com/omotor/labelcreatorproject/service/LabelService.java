@@ -6,6 +6,9 @@ import br.com.omotor.labelcreatorproject.model.dto.*;
 import br.com.omotor.labelcreatorproject.repository.ProjectRepository;
 import br.com.omotor.labelcreatorproject.repository.SystemTranslateRepository;
 import jakarta.transaction.Transactional;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -13,9 +16,8 @@ import org.springframework.web.client.RestTemplate;
 
 
 import java.net.URI;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class LabelService {
@@ -89,20 +91,36 @@ public class LabelService {
         return ResponseEntity.status(200).body(repository.findByValueContainingOrKeyLabelContaining(value, value));
     }
 
-    public ResponseEntity<?> replaceLabel(Html html) {
-        List<SystemTranslate> labels = repository.findAll();
-        List<String> replacedLabels = new ArrayList<>();
-
-        labels.forEach(label -> {
-            CharSequence charSequence = label.getValue().toLowerCase();
-            if (html.getHtml().toLowerCase().contains(charSequence)) {
-                html.setHtml(html.getHtml()
-                        .replace(label.getValue().toLowerCase(), "{{" + "'" + label.getKeyLabel() + "'" + " | translate}}"));
-                replacedLabels.add(label.getValue());
-            }
-        });
-
+    public ResponseEntity<Html> replaceLabel(Html html, Long projectId) {
+        List<SystemTranslate> labels = repository.findAllBySystemLocaleId(1L);
+        String translatedHtml = html.getHtml();
+        HashMap<String, String> devLabels = labelClient.fetchLabels(URI.create(projectRepository.findById(projectId).get().getDevUrl()));
+        for (SystemTranslate label : labels) {
+                String labelToTranslate = label.getValue();
+                String translatedLabel = "{{'" + label.getKeyLabel() + "' | translate}}";
+                translatedHtml = translatedHtml.replaceAll(labelToTranslate, translatedLabel);
+        }
+        for (Map.Entry<String, String> entry : devLabels.entrySet()) {
+            String translatedLabel = "{{'" + entry.getKey() + "' | translate}}";
+            translatedHtml = translatedHtml.replaceAll(entry.getValue(), translatedLabel);
+        }
+        html.setHtml(translatedHtml);
         return ResponseEntity.status(200).body(html);
+    }
+
+    public Set<String> extractTextWithJsoup(String html) {
+        Document doc = Jsoup.parse(html);
+        Elements elements = doc.getAllElements();
+        Set<String> htmlTexts = new HashSet<>();
+        elements.forEach(element -> {
+            htmlTexts.add(element.ownText());
+        });
+        return htmlTexts.stream().filter(element -> !element.contains("{") && !element.contains("}") && !element.isEmpty()).collect(Collectors.toSet());
+    }
+
+    public ResponseEntity<Html> htmlTranslator(Html html, Long projectId){
+        this.createLabel(new Quotes(extractTextWithJsoup(html.getHtml()).stream().toList(), projectId));
+        return this.replaceLabel(html, projectId);
     }
 
     public ResponseEntity<List<SystemTranslateDto>> searchLabelProject(Long id) {
