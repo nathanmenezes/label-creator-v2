@@ -56,18 +56,6 @@ export class QuotesInputComponent implements OnInit{
             }
         )
     }
-
-    getSql(){
-        this.service.getSql().subscribe((resp) =>{
-            this.teste = resp.body;
-            console.log(resp);
-        },
-            error => {
-            console.error(error);
-            }
-        )
-    }
-
     quoteInput:string = "";
 
     separateWords(word: String) {
@@ -91,6 +79,6 @@ export class QuotesInputComponent implements OnInit{
     }
 
     ngOnInit(): void {
-        this.getSql();
+
     }
 }

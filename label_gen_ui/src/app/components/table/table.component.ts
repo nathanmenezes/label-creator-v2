@@ -16,16 +16,17 @@ export class TableComponent implements OnInit {
 
   constructor(private http:LabelService) {}
   labelList: LabelModel[] = [];
+  hasData = false;
 
   hasLabelsSelect(): boolean {
     return labelsSelecionadas.length > 0;
   }
   ngOnInit(){
-    this.findAll();
+      this.findAll();
   }
 
   findAll(){
-    this.http.findAll().subscribe((resp) =>{
+    this.http.findAll(localStorage.getItem("projectId")).subscribe((resp) =>{
         this.labelList = resp;
       },
       error => {

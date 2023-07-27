@@ -9,12 +9,12 @@
         <!--    ====================================================-->
         <div class="row t2">
             <div class="col d-flex align-content-center justify-content-around left" >
-                <textarea class="custom-input-entrada m-3 custom_input_area"></textarea>
+                <textarea class="custom-input-entrada m-3 custom_input_area" readonly [(ngModel)]="sqlResponse" name="sql"></textarea>
             </div>
         </div>
         <div class="row">
             <div class="col d-flex create_button_area bg-dark justify-content-around align-content-center" >
-                <button class="m-2 create_button" mat-button>Substituir</button>
+                <button class="m-2 create_button" mat-button (click)="getSql()">Gerar SQL</button>
             </div>
         </div>
     </div>

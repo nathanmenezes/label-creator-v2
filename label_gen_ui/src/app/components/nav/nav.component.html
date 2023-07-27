@@ -16,7 +16,7 @@
             <img ngSrc="assets/img/logo.png" alt="logo" height="55" width="160">
         </div>
         <div class="col mt-2 d-flex align-content-center justify-content-around">
-            <select class="form-select mt-2 form-select-lg mb-3 project_select" [(ngModel)]="selectedProject">
+            <select class="form-select mt-2 form-select-lg mb-3 project_select" [(ngModel)]="selectedProject" (change)="onSelectProject()">
                 <option *ngFor="let project of projects" [value]="project.id" class="project_select_options">
                     {{ project.name }}
                 </option>

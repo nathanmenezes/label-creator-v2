@@ -23,6 +23,7 @@
                 <textarea class="custom-input-entrada m-3 custom_input_area"
                 value="{{result}}" readonly> </textarea>
             </div>
+            <mat-progress-bar mode="indeterminate" bufferValue="20" *ngIf="hasResult"></mat-progress-bar>
         </div>
         <div class="row">
             <div class="col d-flex create_button_area bg-dark justify-content-around align-content-center">

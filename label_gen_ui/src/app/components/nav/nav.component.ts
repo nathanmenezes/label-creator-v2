@@ -15,6 +15,11 @@ export class NavComponent implements OnInit{
 
   selectedProject!: any;
 
+  onSelectProject(){
+    localStorage.setItem("projectId", this.selectedProject);
+    console.log(localStorage.getItem("projectId"));
+  }
+
   teste(selectedValue: any) {
     const selectedProject = this.projects.find(project => project.id === selectedValue);
     if(selectedProject){

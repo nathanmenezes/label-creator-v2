@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {Html} from "../../model/html";
 import {LabelService} from "../../service/label.service";
+import {ReplaceModel} from "../../model/replace-model";
 
 @Component({
     selector: 'app-replace',
@@ -18,11 +19,14 @@ export class ReplaceComponent {
     }
 
     result: string = "";
+    hasResult: boolean = false;
 
     sendHtml() {
+        this.hasResult = true;
         this.service.sendHtml(this.html).subscribe((resp) => {
                 console.log(resp);
                 this.result = resp.html;
+                this.hasResult = false;
             },
             error => {
                 console.error(error);

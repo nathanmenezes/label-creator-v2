@@ -21,6 +21,8 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { ReplaceComponent } from './components/replace/replace.component';
 import { SqlgeneratorComponent } from './components/sqlgenerator/sqlgenerator.component';
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {MatProgressBarModule} from "@angular/material/progress-bar";
 
 
 @NgModule({
@@ -48,7 +50,9 @@ import { SqlgeneratorComponent } from './components/sqlgenerator/sqlgenerator.co
         NgOptimizedImage,
         ReactiveFormsModule,
         FormsModule,
-        MatCheckboxModule
+        MatCheckboxModule,
+        MatProgressBarModule,
+        MatProgressSpinnerModule
     ],
   providers: [],
   bootstrap: [AppComponent]
